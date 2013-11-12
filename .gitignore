@@ -1,0 +1,11 @@
+.rake_test_cache
+.chef/
+.DS_Store
+cookbooks/
+tmp/
+bin/
+.bundle/
+test/
+*.orig
+.vagrant
+data_bags/
