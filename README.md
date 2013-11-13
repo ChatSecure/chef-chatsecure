@@ -17,7 +17,7 @@ Provision the current roles/recipes defined in the `Vagrantfile`:
 
 	$ vagrant provision
 	
-Other useful commands are `vagrant destroy` to destroy the VM, `vagrant ssh` to ssh into the VM, `vagrant halt` and `vagrant suspend` to halt/suspend.
+Other useful commands are `vagrant destroy` to destroy the VM, `vagrant ssh` to ssh into the VM, `vagrant halt` and `vagrant suspend` to halt/suspend. Sometimes you have to do `vagrant reload` as well when changing VM configuration.
 
 --------------------------------------
 

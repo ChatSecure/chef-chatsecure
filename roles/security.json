@@ -1,0 +1,30 @@
+{
+  "name": "security",
+  "description": "security configuration",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "firewall": {
+      "rules": [ {
+        "http": {
+          "port": 80
+          }
+        }, {
+        "https": {
+          "port": 443
+          }
+        }, {
+        "ssh": {
+          "port": 22
+          }
+        }
+      ]
+    }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[fail2ban]",
+    "recipe[ufw]"
+  ]
+}
