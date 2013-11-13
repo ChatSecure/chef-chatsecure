@@ -8,6 +8,7 @@
   },
   "chef_type": "role",
   "run_list": [
-    "recipe[htop]"
+    "recipe[htop]",
+    "recipe[git]"
   ]
 }
