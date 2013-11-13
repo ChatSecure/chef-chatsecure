@@ -1,6 +1,6 @@
 {
-  "name": "nginx",
-  "description": "Nginx webserver",
+  "name": "base",
+  "description": "base ubuntu configuration",
   "json_class": "Chef::Role",
   "default_attributes": {
   },
@@ -8,7 +8,6 @@
   },
   "chef_type": "role",
   "run_list": [
-    "recipe[nginx::repo]",
-    "recipe[nginx]"
+    "recipe[htop]"
   ]
 }

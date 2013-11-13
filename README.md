@@ -4,10 +4,22 @@ TODO: write up chef cookbooks to automate this process
 
 ## Vagrant
 
-Install Vagrant, then install these plugins.
+Install [Vagrant](http://www.vagrantup.com), [VirtualBox](https://www.virtualbox.org), and then install these plugins.
 
     $ vagrant plugin install vagrant-omnibus
     $ vagrant plugin install vagrant-berkshelf
+
+Then you should be able to bring up the VM:
+
+	$ vagrant up
+	
+Provision the current roles/recipes defined in the `Vagrantfile`:
+
+	$ vagrant provision
+	
+Other useful commands are `vagrant destroy` to destroy the VM, `vagrant ssh` to ssh into the VM, `vagrant halt` and `vagrant suspend` to halt/suspend.
+
+--------------------------------------
 
 # Initial Setup
 
