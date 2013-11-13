@@ -12,6 +12,14 @@
     "fail2ban": {
       "locked_version": "2.0.0"
     },
+    "unattended_upgrades": {
+      "locked_version": "0.0.1",
+      "git": "git://github.com/ChatSecure/chef-unattended-upgrades.git",
+      "ref": "d67f094903755bd072f6d3cb1983d2e4560fad6a"
+    },
+    "logwatch": {
+      "locked_version": "1.1.0"
+    },
     "apt": {
       "locked_version": "2.3.0"
     },
@@ -35,6 +43,9 @@
     },
     "firewall": {
       "locked_version": "0.11.2"
+    },
+    "perl": {
+      "locked_version": "1.2.0"
     }
   }
 }

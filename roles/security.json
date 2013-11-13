@@ -3,6 +3,15 @@
   "description": "security configuration",
   "json_class": "Chef::Role",
   "default_attributes": {
+    "logwatch": {
+      "email": "chris@chatsecure.org",
+      "detail": "high",
+      "output": "mail",
+      "format": "html"
+    },
+    "unattended_upgrades": {
+      "mail": "chris@chatsecure.org"
+    },
     "firewall": {
       "rules": [ {
         "http": {
@@ -25,6 +34,8 @@
   "chef_type": "role",
   "run_list": [
     "recipe[fail2ban]",
-    "recipe[ufw]"
+    "recipe[ufw]",
+    "recipe[unattended_upgrades]",
+    "recipe[logwatch]"
   ]
 }
