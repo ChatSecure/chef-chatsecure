@@ -20,6 +20,18 @@
     "logwatch": {
       "locked_version": "1.1.0"
     },
+    "git": {
+      "locked_version": "2.7.0"
+    },
+    "user": {
+      "locked_version": "0.3.0"
+    },
+    "sudo": {
+      "locked_version": "2.2.2"
+    },
+    "chatsecure_users": {
+      "path": "./cookbooks/chatsecure_users"
+    },
     "apt": {
       "locked_version": "2.3.0"
     },
@@ -46,6 +58,15 @@
     },
     "perl": {
       "locked_version": "1.2.0"
+    },
+    "dmg": {
+      "locked_version": "2.0.4"
+    },
+    "windows": {
+      "locked_version": "1.11.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
     }
   }
 }

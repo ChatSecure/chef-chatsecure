@@ -1,0 +1,23 @@
+{
+  "name": "users",
+  "description": "ChatSecure Users",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "chatsecure_users": {
+      "admin_gid": 999,
+      "active_gids": [0, 999]
+    },
+    "authorization": {
+      "sudo": {
+        "groups": ["admins"]
+      }
+    }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[chatsecure_users]",
+    "recipe[sudo]"
+  ]
+}

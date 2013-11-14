@@ -92,12 +92,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # some recipes and/or roles.
   #
   config.vm.provision :chef_solo do |chef|
-    #chef.cookbooks_path = "../my-recipes/cookbooks"
-    chef.roles_path = "./roles"
-    chef.data_bags_path = "./data_bags"
+    chef.roles_path = "roles"
+    chef.data_bags_path = "data_bags"
     chef.add_role "nginx"
     chef.add_role "base"
     chef.add_role "security"
+    chef.add_role "users"
   #
   #   # You may also specify custom JSON attributes:
   #   chef.json = { :mysql_password => "foo" }
