@@ -1,7 +1,6 @@
 .rake_test_cache
 .chef/
 .DS_Store
-cookbooks/
 tmp/
 bin/
 .bundle/
