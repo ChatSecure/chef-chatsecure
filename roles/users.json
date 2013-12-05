@@ -9,7 +9,8 @@
     },
     "authorization": {
       "sudo": {
-        "groups": ["admins"]
+        "groups": ["admins"],
+        "include_sudoers_d": true
       }
     }
   },
