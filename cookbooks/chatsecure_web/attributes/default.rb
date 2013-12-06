@@ -18,7 +18,8 @@ default['chatsecure_web']['ssl_cert']           = "chatsecure-bundle.crt"
 default['chatsecure_web']['ssl_key']            = "chatsecure.key"
 
 # System
-default['chatsecure_web']['app_root']      		= "/var/git/chatsecure-web.git"
+default['chatsecure_web']['app_root']           = "/var/www/chatsecure-web"
+default['chatsecure_web']['git_root']      		= "/var/git/chatsecure-web.git"
 default['chatsecure_web']['domain']      		= "chatsecure.org"
 default['chatsecure_web']['git_user']      		= "git"
 default['chatsecure_web']['service_user']      	= "django"

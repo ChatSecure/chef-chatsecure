@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo
+echo "**** Pulling changes into Live [Hub's post-update hook]"
+echo
+
+cd <%= @app_root %> || exit
+unset GIT_DIR
+git pull origin master
+
+exec git-update-server-info

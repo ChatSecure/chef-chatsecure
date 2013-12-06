@@ -86,16 +86,39 @@ python_pip "uwsgi" do
   virtualenv virtualenv_path
 end
 
+
+# Git stuff
 ssh_known_hosts_entry 'github.com'
 
 # Git checkout
-git node['chatsecure_web']['app_root'] do
+git node['chatsecure_web']['git_root'] do
    repository node['chatsecure_web']['git_url'] 
    revision node['chatsecure_web']['git_rev']  
    action :sync
    user node['chatsecure_web']['git_user']
    group node['chatsecure_web']['service_user_group']
 end
+
+template node['chatsecure_web']['git_root'] + "/.git/hooks/post-update" do
+  source "post-update.erb"
+  owner node['chatsecure_web']['git_user']
+  group node['chatsecure_web']['service_user_group']
+  variables({
+    :app_root => node['chatsecure_web']['app_root']
+  })
+end
+
+# Git checkout
+git node['chatsecure_web']['app_root'] do
+   repository node['chatsecure_web']['git_root']
+   revision node['chatsecure_web']['git_rev']  
+   action :sync
+   user node['chatsecure_web']['git_user']
+   group node['chatsecure_web']['service_user_group']
+end
+
+
+
 
 # Setup git repository for remote use
 
