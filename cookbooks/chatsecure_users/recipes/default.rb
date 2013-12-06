@@ -42,6 +42,7 @@ users.each do |username|
     user_account username do
       comment   (defined?(user['comment']) ? user['comment'] : "")
       ssh_keys  (defined?(user['ssh_keys']) ? user['ssh_keys'] : "")
+      shell     (defined?(user['shell']) ? user['shell'] : node['user']['default_shell'])
       uid       uid
       gid       gid
       password  passwords[username]
