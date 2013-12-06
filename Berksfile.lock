@@ -29,8 +29,20 @@
     "sudo": {
       "locked_version": "2.2.2"
     },
+    "database": {
+      "locked_version": "1.5.2"
+    },
+    "postgres": {
+      "locked_version": "1.0.1"
+    },
+    "python": {
+      "locked_version": "1.4.4"
+    },
     "chatsecure_users": {
       "path": "./cookbooks/chatsecure_users"
+    },
+    "chatsecure_web": {
+      "path": "./cookbooks/chatsecure_web"
     },
     "apt": {
       "locked_version": "2.3.0"
@@ -67,6 +79,39 @@
     },
     "chef_handler": {
       "locked_version": "1.1.4"
+    },
+    "mysql": {
+      "locked_version": "4.0.6"
+    },
+    "openssl": {
+      "locked_version": "1.1.0"
+    },
+    "postgresql": {
+      "locked_version": "3.3.4"
+    },
+    "aws": {
+      "locked_version": "1.0.0"
+    },
+    "xfs": {
+      "locked_version": "1.1.0"
+    },
+    "resource-control": {
+      "locked_version": "0.1.0"
+    },
+    "rbac": {
+      "locked_version": "1.0.1"
+    },
+    "smf": {
+      "locked_version": "2.0.1"
+    },
+    "ipaddr_extensions": {
+      "locked_version": "0.1.0"
+    },
+    "ssh_known_hosts": {
+      "locked_version": "1.1.0"
+    },
+    "partial_search": {
+      "locked_version": "1.0.6"
     }
   }
 }

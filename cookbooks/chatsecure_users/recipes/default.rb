@@ -9,8 +9,6 @@
 
 active_gids = node['chatsecure_users']['active_gids']
 
-default_gid = node['chatsecure_users']['default_gid']
-
 users_databag_name = node['chatsecure_users']['users_databag_name']
 groups_databag_name = node['chatsecure_users']['groups_databag_name']
 groups_item_name = node['chatsecure_users']['groups_databag_item_name']
@@ -21,7 +19,6 @@ users = data_bag(users_databag_name)
 gids_item = data_bag_item(groups_databag_name, groups_item_name)
 gids = gids_item["gids"]
 passwords = data_bag_item(passwords_databag_name, passwords_item_name)
-admins = []
 
 Chef::Log.info("Got users #{users}")
 

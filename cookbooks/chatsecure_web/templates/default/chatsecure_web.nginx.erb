@@ -1,0 +1,37 @@
+# Django
+
+# the upstream component nginx needs to connect to
+upstream django {
+    # server unix:///path/to/your/mysite/mysite.sock; # for a file socket
+    server 127.0.0.1:<%= @internal_port %>; # for a web port socket (we'll use this first)
+}
+
+server {
+    listen      <%= @http_listen_port %> default_server;
+    server_name <%= @domain %> www.<%= @domain %>;
+    location / {
+        rewrite     ^   https://$server_name$request_uri? permanent;
+    }
+}
+
+
+server {
+    listen <%= @https_listen_port %>;
+    server_name <%= @domain %>;
+    add_header Strict-Transport-Security "max-age=315360000; includeSubdomains";
+    ssl on;
+    ssl_certificate <%= @ssl_dir %><%= @ssl_cert %>;
+    ssl_certificate_key <%= @ssl_dir %><%= @ssl_key %>;
+    keepalive_timeout 70;
+    access_log <%= @access_log %>;
+    error_log <%= @error_log %>;
+
+    location /static {
+        alias <%= @static_path %>; # your Django project's static files - amend as required
+    }
+
+    location / {
+        uwsgi_pass  django;
+        include        uwsgi_params;
+    }
+}

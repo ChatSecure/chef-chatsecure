@@ -6,7 +6,7 @@ description      'Installs/Configures chatsecure_users'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
 
-recipe "chatsecure_users", "setup OpenWatch user accounts"
+recipe "chatsecure_users", "setup ChatSecure user accounts"
 
 depends "user"
 depends "sudo"

@@ -5,7 +5,7 @@
   "default_attributes": {
     "chatsecure_users": {
       "admin_gid": 999,
-      "active_gids": [0, 999]
+      "active_gids": [0, 999, 500]
     },
     "authorization": {
       "sudo": {

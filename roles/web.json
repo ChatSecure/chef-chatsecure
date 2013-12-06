@@ -1,0 +1,17 @@
+{
+  "name": "web",
+  "description": "ChatSecure Web",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[postgres]",
+    "recipe[postgresql::server]",
+    "recipe[database::postgresql]",
+    "recipe[python]",
+    "recipe[chatsecure_web]"
+  ]
+}
