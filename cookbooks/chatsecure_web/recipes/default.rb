@@ -99,12 +99,14 @@ git node['chatsecure_web']['git_root'] do
    group node['chatsecure_web']['service_user_group']
 end
 
-template node['chatsecure_web']['git_root'] + "/.git/hooks/post-update" do
-  source "post-update.erb"
+template node['chatsecure_web']['git_root'] + "/.git/hooks/post-receive" do
+  source "post-receive.erb"
   owner node['chatsecure_web']['git_user']
   group node['chatsecure_web']['service_user_group']
+  mode "770"
   variables({
-    :app_root => node['chatsecure_web']['app_root']
+    :app_root => node['chatsecure_web']['app_root'],
+    :virtualenv_path => virtualenv_path
   })
 end
 

@@ -7,6 +7,6 @@ echo
 cd <%= @app_root %> || exit
 unset GIT_DIR
 git pull origin master
-
+<%= @virtualenv_path %>/bin/pip install -r requirements.txt
 
 exec git-update-server-info
