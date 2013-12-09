@@ -7,7 +7,7 @@
 
 # Chef repo
 default['chatsecure_web']['secret_databag_name'] 			= "secrets"
-default['chatsecure_web']['python_databag_item_name'] 		= "chatsecure_web"
+default['chatsecure_web']['secret_databag_item_name'] 		= "secrets"
 
 # SSL
 default['chatsecure_web']['ssl_databag_name'] 		= "ssl"

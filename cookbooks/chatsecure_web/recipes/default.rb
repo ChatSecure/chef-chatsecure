@@ -61,16 +61,8 @@ end
 
 virtualenv_path = node['chatsecure_web']['virtualenvs_dir'] + node['chatsecure_web']['virtualenv_name']
 python_virtualenv virtualenv_path do
-  #owner node['chatsecure_web']['service_user']   
-  #group node['chatsecure_web']['service_user_gid']
-  action :create
-end
-
-# Make git checkout dir
-directory node['chatsecure_web']['app_root'] do
-  owner node['chatsecure_web']['git_user']
-  group node['chatsecure_web']['service_user_group']
-  recursive true
+  owner node['chatsecure_web']['service_user']   
+  group node['chatsecure_web']['service_user_gid']
   action :create
 end
 
@@ -88,6 +80,14 @@ end
 
 
 # Git stuff
+# Make git checkout dir
+directory node['chatsecure_web']['app_root'] do
+  owner node['chatsecure_web']['git_user']
+  group node['chatsecure_web']['service_user_group']
+  recursive true
+  action :create
+end
+
 ssh_known_hosts_entry 'github.com'
 
 # Git checkout
@@ -117,73 +117,27 @@ git node['chatsecure_web']['app_root'] do
    group node['chatsecure_web']['service_user_group']
 end
 
-
-
-
-# Setup git repository for remote use
-
-=begin
-# Copy post-update hook file
-# To reset --hard on push
-cookbook_file node['chatsecure_web']['app_root'] + '/.git/hooks/post-update'  do
-  source "post-update"
-  owner node['chatsecure_web']['git_user']
-  group node['chatsecure_web']['service_group'] 
-  action :create_if_missing # see actions section below
-end
-
-# Create /.git/config
-template node['chatsecure_web']['app_root'] + "/.git/config" do
-    source "config.erb"
-    owner node['chatsecure_web']['git_user']   
-    group node['chatsecure_web']['service_user_group']   
-    variables({     
-      :git_url => node['chatsecure_web']['git_url']  
-    })
-    action :create
-end
-
-
-
-# Pip install -r requirements.txt
-execute "pip install requirements.txt" do
-    user "root"
-    command virtualenv_path + "/bin/pip install -r " + node['chatsecure_web']['app_root'] + "/requirements.txt"
-end
-
-=end
-
-=begin
+secrets = data_bag_item(node['chatsecure_web']['secret_databag_name'] , node['chatsecure_web']['secret_databag_item_name'])
+django_secret_key = secrets['django_secret_key']
 # Make local_settings.py 
-template node['chatsecure_web']['app_root'] + "/reopenwatch/reopenwatch/local_settings.py" do
+app_name = node['chatsecure_web']['app_name']
+template node['chatsecure_web']['app_root'] + "/#{app_name}/#{app_name}/local_settings.py" do
     source "local_settings.py.erb"
     owner node['chatsecure_web']['git_user']   
     group node['chatsecure_web']['service_user_group']   
     mode "770"
     variables({
+      :django_secret_key => django_secret_key,
       :db_name => node['chatsecure_web']['db_name'],
       :db_user => node['chatsecure_web']['db_user'],
       :db_password => node['postgresql']['password']['postgres'],
       :db_host => node['chatsecure_web']['db_host'],
       :db_port => node['chatsecure_web']['db_port'],
-      :node_api_user => secrets['django_api_user'],
-      :node_api_secret => secrets['django_api_password'],
-      :etherpad_url => node['chatsecure_web']['etherpad_url'],
-      :etherpad_pad_url => node['chatsecure_web']['etherpad_pad_url'],
-      :etherpad_api_key => secrets['etherpad_api_key'],
-      :mailgun_api_key => secrets['mailgun_api_key'],
-      :stripe_secret => secrets['stripe_secret'],
-      :stripe_publishable => node['chatsecure_web']['stripe_publishable'],
-      :aws_access_key_id => secrets['aws_access_key_id'],
-      :aws_secret_access_key => secrets['aws_secret_access_key'],
-      :aws_bucket_name => node['chatsecure_web']['aws_bucket_name'],
-      :sentry_dsn => secrets['sentry_dsn'],
-      :embedly_api_key => secrets['embedly_api_key'],
       :chef_node_name => Chef::Config[:node_name]
     })
     action :create
 end
-=end
+
 
 # Make Nginx log dirs
 directory node['chatsecure_web']['log_dir'] do
