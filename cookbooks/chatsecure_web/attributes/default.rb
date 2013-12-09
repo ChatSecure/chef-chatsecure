@@ -23,14 +23,21 @@ default['chatsecure_web']['git_root']      		= "/var/git/chatsecure-web.git"
 default['chatsecure_web']['domain']      		= "chatsecure.org"
 default['chatsecure_web']['git_user']      		= "git"
 default['chatsecure_web']['service_user']      	= "django"
+default['chatsecure_web']['service_user_id']       = 3002
 default['chatsecure_web']['service_user_group']  = "service_users"
+default['chatsecure_web']['service_user_gid']  = 500
 default['chatsecure_web']['service_name']      	= "chatsecure_web"
 default['chatsecure_web']['git_url']      		= "git://github.com/ChatSecure/chatsecure-web.git"
 default['chatsecure_web']['git_rev']      		= "master"
 default['chatsecure_web']['log_dir']     		= "/var/log/chatsecure-web/"
 default['chatsecure_web']['service_log']		= "chatsecure_web.log"
 default['chatsecure_web']['service_error_log']	= "chatsecure_web_error.log"
+
+# uWSGI config
 default['chatsecure_web']['app_workers']        = 5
+default['chatsecure_web']['max_requests']        = 5000 # max requests per app worker
+default['chatsecure_web']['harakiri']        = 20 # Kill requests taking longer than 20 sec
+
 
 #Python
 default['chatsecure_web']['virtualenv_name']     = "web"

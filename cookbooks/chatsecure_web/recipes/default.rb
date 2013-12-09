@@ -173,17 +173,22 @@ end
 # Upstart service config file
 template "/etc/init/" + node['chatsecure_web']['service_name'] + ".conf" do
     source "upstart.conf.erb"
-    owner node['chatsecure_web']['service_user_id'] 
-    group node['chatsecure_web']['service_user_gid'] 
+    owner 'root' 
+    group 'root'
     variables({
-    :service_user => node['chatsecure_web']['service_user_id'],
+    :service_user => node['chatsecure_web']['service_user'],
     :virtualenv_path => virtualenv_path,
     :app_root => node['chatsecure_web']['app_root'],
     :app_name => node['chatsecure_web']['app_name'],
     :access_log_path => node['chatsecure_web']['log_dir'] + node['chatsecure_web']['service_log'],
     :error_log_path => node['chatsecure_web']['log_dir'] + node['chatsecure_web']['service_error_log'],
     :app_port => node['chatsecure_web']['internal_port'],
-    :app_workers => node['chatsecure_web']['app_workers']
+    :app_workers => node['chatsecure_web']['app_workers'],
+    :max_requests => node['chatsecure_web']['max_requests'],
+    :harakiri => node['chatsecure_web']['harakiri'],
+    :service_user_id => node['chatsecure_web']['service_user_id'],
+    :service_user_gid => node['chatsecure_web']['service_user_gid'],
+    :service_name => node['chatsecure_web']['service_name']
     })
 end
 

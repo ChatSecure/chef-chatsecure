@@ -3,22 +3,22 @@ description "upstart configuration for chatsecure_web"
 
 setuid <%= @service_user %>
 
-start on net-device-up
-stop on shutdown
+start on runlevel [2345]
+stop on runlevel [06]
 
 respawn
 
 script
-    exec <%= @virtualenv_path %>/bin/python uwsgi --chdir=<%= @app_root %>/<%= @app_name %> \
+    exec <%= @virtualenv_path %>/bin/uwsgi --chdir=<%= @app_root %>/<%= @app_name %> \
     --module=<%= @app_name %>.wsgi:application \
     --env DJANGO_SETTINGS_MODULE=<%= @app_name %>.settings \
     --master --pidfile=/tmp/<%= @service_name %>.pid \
-    --socket=127.0.0.1:<%= @app_port %> \      # can also be a file
-    --processes=<%= @app_workers %> \                 # number of worker processes
-    --uid=<%= @service_user %> --gid=<%= @service_user_group %> \         # if root, uwsgi can drop privileges
-    --harakiri=<%= @process_timeout %> \                 # respawn processes taking more than 20 seconds
-    --max-requests=<%= @max_requests %> \           # respawn processes after serving 5000 requests
-    --vacuum \                      # clear environment on exit
-    --home=<%= @virtualenv_path %> \   # optional path to a virtualenv
-    --daemonize=<%= @access_log_path %>      # background the process
+    --die-on-term \
+    --socket=127.0.0.1:<%= @app_port %> \
+    --processes=<%= @app_workers %> \
+    --uid=<%= @service_user_id %> --gid=<%= @service_user_gid %> \
+    --harakiri=<%= @harakiri %> \
+    --max-requests=<%= @max_requests %> \
+    --vacuum \
+    --home=<%= @virtualenv_path %> \
 end script
