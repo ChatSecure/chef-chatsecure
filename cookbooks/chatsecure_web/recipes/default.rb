@@ -62,8 +62,24 @@ end
 virtualenv_path = node['chatsecure_web']['virtualenvs_dir'] + node['chatsecure_web']['virtualenv_name']
 python_virtualenv virtualenv_path do
   owner node['chatsecure_web']['service_user']   
-  group node['chatsecure_web']['service_user_gid']
+  group node['chatsecure_web']['service_user_group']
   action :create
+end
+
+python_pip "uwsgi" do
+  virtualenv virtualenv_path
+end
+
+execute "fix_virtualenv_permissions" do
+  command "chmod -R 770 ."
+  cwd virtualenv_path
+end
+
+owner = node['chatsecure_web']['service_user']
+group = node['chatsecure_web']['service_user_group']
+execute "fix_virtualenv_ownership" do
+  command "chown -R #{owner}:#{group} ."
+  cwd virtualenv_path
 end
 
 # Make uwsgi params file
@@ -72,10 +88,6 @@ cookbook_file "uwsgi_params" do
   owner node['nginx']['user']
   group node['nginx']['group']
   action :create
-end
-
-python_pip "uwsgi" do
-  virtualenv virtualenv_path
 end
 
 
@@ -112,11 +124,23 @@ end
 
 # Git checkout
 git node['chatsecure_web']['app_root'] do
-   repository node['chatsecure_web']['git_root']
-   revision node['chatsecure_web']['git_rev']  
-   action :sync
-   user node['chatsecure_web']['git_user']
-   group node['chatsecure_web']['service_user_group']
+  repository node['chatsecure_web']['git_root']
+  revision node['chatsecure_web']['git_rev']  
+  action :sync
+  user node['chatsecure_web']['git_user']
+  group node['chatsecure_web']['service_user_group']
+end
+
+execute "fix_app_permissions" do
+  command "chmod -R 770 ."
+  cwd node['chatsecure_web']['app_root']
+end
+
+owner = node['chatsecure_web']['service_user']
+group = node['chatsecure_web']['service_user_group']
+execute "fix_app_ownership" do
+  command "chown -R #{owner}:#{group} ."
+  cwd virtualenv_path
 end
 
 secrets = data_bag_item(node['chatsecure_web']['secret_databag_name'] , node['chatsecure_web']['secret_databag_item_name'])
