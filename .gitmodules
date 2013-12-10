@@ -1,0 +1,6 @@
+[submodule "site-cookbooks/chatsecure_users"]
+	path = site-cookbooks/chatsecure_users
+	url = git@github.com:ChatSecure/chatsecure-users-cookbook.git
+[submodule "site-cookbooks/chatsecure_web"]
+	path = site-cookbooks/chatsecure_web
+	url = git@github.com:ChatSecure/chatsecure-web-cookbook.git

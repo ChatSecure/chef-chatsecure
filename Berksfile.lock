@@ -39,10 +39,10 @@
       "locked_version": "1.4.4"
     },
     "chatsecure_users": {
-      "path": "./cookbooks/chatsecure_users"
+      "path": "./site-cookbooks/chatsecure_users"
     },
     "chatsecure_web": {
-      "path": "./cookbooks/chatsecure_web"
+      "path": "./site-cookbooks/chatsecure_web"
     },
     "apt": {
       "locked_version": "2.3.0"
