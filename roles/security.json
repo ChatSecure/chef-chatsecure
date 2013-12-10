@@ -3,6 +3,12 @@
   "description": "security configuration",
   "json_class": "Chef::Role",
   "default_attributes": {
+    "openssh": {
+      "server": {
+        "permit_root_login": "no",
+        "password_authentication": "no"
+      }
+    },
     "logwatch": {
       "email": "chris@chatsecure.org",
       "detail": "high",
@@ -34,6 +40,7 @@
   "chef_type": "role",
   "run_list": [
     "recipe[fail2ban]",
+    "recipe[openssh]",
     "recipe[ufw]",
     "recipe[unattended_upgrades]",
     "recipe[logwatch]"
