@@ -1,6 +1,6 @@
-# chatsecure.org setup
+# chatsecure.org chef repo
 
-TODO: write up chef cookbooks to automate this process
+Chef is way better than provisioning servers by hand.
 
 ## Vagrant
 
