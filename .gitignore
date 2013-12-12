@@ -9,3 +9,4 @@ test/
 .vagrant
 data_bags/
 nodes/
+cookbooks/
