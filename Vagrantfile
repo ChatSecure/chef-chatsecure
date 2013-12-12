@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu-12.04"
   config.berkshelf.enabled = true
   config.omnibus.chef_version = :latest
-  config.vm.hostname = "chatsecure.org.vagrant.vm"
+  config.vm.hostname = "chatsecure.org"
 
   config.vm.provider "virtualbox" do |v|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]

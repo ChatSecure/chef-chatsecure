@@ -70,3 +70,11 @@ For some reason chef-solo breaks if you include too much stuff in your json file
 	      "role[web]"
 	   ]
 	}
+	
+## Git Deploys
+
+Now you can deploy application code with git:
+
+    $ git remote add vagrant ssh://git@127.0.0.1:2222/var/git/chatsecure-web.git
+    $ git remote add production git@beta.chatsecure.org:/var/git/chatsecure-web.git
+    $ git push production master
