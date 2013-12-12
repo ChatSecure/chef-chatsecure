@@ -3,6 +3,9 @@
   "description": "ChatSecure Web",
   "json_class": "Chef::Role",
   "default_attributes": {
+    "memcached": {
+      "listen": "127.0.0.1"
+    }
   },
   "override_attributes": {
   },
@@ -12,6 +15,7 @@
     "recipe[postgresql::server]",
     "recipe[database::postgresql]",
     "recipe[python]",
+    "recipe[memcached]",
     "recipe[chatsecure_web]"
   ]
 }

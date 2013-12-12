@@ -38,6 +38,9 @@
     "python": {
       "locked_version": "1.4.4"
     },
+    "memcached": {
+      "locked_version": "1.6.6"
+    },
     "openssh": {
       "locked_version": "1.3.0"
     },
