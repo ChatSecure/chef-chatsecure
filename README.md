@@ -32,3 +32,41 @@ Install chef-solo on the remote server with knife-solo:
 Provision the server with the latest cookbooks (similar to `vagrant provision`):
 
     $ knife solo cook user@example.com
+
+## Data Bags
+
+The `data_bags` directory should look like this:
+
+    groups
+        groups.json
+    secrets
+        secrets.json
+    ssl
+        certs.json
+        keys.json
+    user-passwords
+    	passwords.json
+    users
+        user1.json
+        user2.json
+        user3.json
+        
+## Nodes
+
+For some reason chef-solo breaks if you include too much stuff in your json file. In the `nodes` directory include a node `example.com.json`:
+
+	{
+	   "name": "example.com",
+	   "postgresql": {
+	      "password": {
+	         "postgres": "example_password"
+	      }
+	   },
+	   "run_list": [
+	      "role[nginx]",
+	      "role[base]",
+	      "role[security]",
+	      "role[users]",
+	      "role[web]"
+	   ]
+	}
