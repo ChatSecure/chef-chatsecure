@@ -33,6 +33,10 @@ Provision the server with the latest cookbooks (similar to `vagrant provision`):
 
     $ knife solo cook user@example.com
 
+Clean it up
+
+	$ knife solo clean user@example.com
+
 ## Data Bags
 
 The `data_bags` directory should look like this:
