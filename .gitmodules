@@ -4,3 +4,9 @@
 [submodule "site-cookbooks/chatsecure_web"]
 	path = site-cookbooks/chatsecure_web
 	url = git@github.com:ChatSecure/chatsecure-web-cookbook.git
+[submodule "site-cookbooks/chatsecure_ssl"]
+	path = site-cookbooks/chatsecure_ssl
+	url = git@github.com:ChatSecure/chatsecure-ssl-cookbook.git
+[submodule "site-cookbooks/chatsecure_jekyll"]
+	path = site-cookbooks/chatsecure_jekyll
+	url = git@github.com:ChatSecure/chatsecure-jekyll-cookbook.git

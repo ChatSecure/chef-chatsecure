@@ -1,0 +1,14 @@
+{
+  "name": "jekyll",
+  "description": "ChatSecure Jekyll",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[chatsecure_ssl]",
+    "recipe[chatsecure_jekyll]"
+  ]
+}

@@ -100,7 +100,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_role "base"
     chef.add_role "security"
     chef.add_role "users"
-    chef.add_role "web"
+    chef.add_role "jekyll"
     chef.json = { 
       :postgresql => {
         :password => {
