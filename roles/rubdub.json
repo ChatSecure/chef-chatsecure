@@ -1,0 +1,26 @@
+{
+  "name": "rubdub",
+  "description": "ChatSecure Rubdub",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "override_attributes" : {
+  	"firewall": {
+      "rules": [ {
+        "xmpp": {
+          "port": 5269
+          }
+        }, {
+        "ssh": {
+          "port": 22
+          }
+        }
+      ]
+    } 
+  },
+  "run_list": [
+  	"recipe[firewall::default]",
+    "recipe[nodejs::npm]",
+    "recipe[chatsecure_ssl]",
+    "recipe[chatsecure_rubdub]"
+  ]
+}

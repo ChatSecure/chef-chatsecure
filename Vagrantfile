@@ -92,21 +92,29 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.
   #
+  # Currently configured as a rubdub node
   config.vm.provision :chef_solo do |chef|
+    chef.channel = "stable"
+    chef.version = "12.10.24"
     chef.log_level = :debug
     chef.roles_path = "roles"
     chef.data_bags_path = "data_bags"
-    chef.add_role "nginx"
+#    chef.add_role "nginx"
     chef.add_role "base"
     chef.add_role "security"
     chef.add_role "users"
-    chef.add_role "jekyll"
+#    chef.add_role "jekyll"
+    chef.add_role "rubdub"
     chef.json = { 
-      :postgresql => {
-        :password => {
-          :postgres => "postgres_password"
-        }
-      } 
+	"chatsecure_ssl" => {
+		"ssl_cert" => "pubsub.chatsecure.org.crt",
+		"ssl_key" => "pubsub.chatsecure.org.key"
+	}
+#      :postgresql => {
+#        :password => {
+#          :postgres => "postgres_password"
+#        }
+#      } 
     }
   end
 

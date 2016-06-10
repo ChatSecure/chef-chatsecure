@@ -10,3 +10,6 @@
 [submodule "site-cookbooks/chatsecure_jekyll"]
 	path = site-cookbooks/chatsecure_jekyll
 	url = git@github.com:ChatSecure/chatsecure-jekyll-cookbook.git
+[submodule "site-cookbooks/chatsecure_rubdub"]
+	path = site-cookbooks/chatsecure_rubdub
+	url = git@github.com:ChatSecure/chatsecure-rubdub-cookbook.git
