@@ -45,6 +45,7 @@ GRAPH
     nodejs (>= 0.0.0)
     ssh_known_hosts (>= 0.0.0)
   chatsecure_ssl (0.1.0)
+    chatsecure_rubdub (>= 0.0.0)
   chatsecure_users (0.1.0)
     sudo (>= 0.0.0)
     user (>= 0.0.0)

@@ -15,7 +15,17 @@
           }
         }
       ]
-    } 
+    },
+    "chatsecure_ssl": {
+      "ssl_cert" : "pubsub.chatsecure.org.crt",
+      "ssl_key" : "pubsub.chatsecure.org.key"
+    },
+    "chatsecure_rubdub": {
+      "bind_address": "pubsub.chatsecure.org",
+      "domain": "pubsub.chatsecure.org",
+      "tls_key_path": "/srv/ssl/pubsub.chatsecure.org.key",
+      "tls_cert_path": "/srv/ssl/pubsub.chatsecure.org.crt"
+    }
   },
   "run_list": [
   	"recipe[firewall::default]",
