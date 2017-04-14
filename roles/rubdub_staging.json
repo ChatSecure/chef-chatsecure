@@ -1,0 +1,36 @@
+{
+  "name": "rubdub_staging",
+  "description": "ChatSecure Rubdub",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "override_attributes" : {
+  	"firewall": {
+      "rules": [ {
+        "xmpp": {
+          "port": 5269
+          }
+        }, {
+        "ssh": {
+          "port": 22
+          }
+        }
+      ]
+    },
+    "chatsecure_ssl": {
+      "ssl_cert" : "pubsub.chatsecure.org.crt",
+      "ssl_key" : "pubsub.chatsecure.org.key"
+    },
+    "chatsecure_rubdub": {
+      "bind_address": "pubsub-staging.chatsecure.org",
+      "domain": "pubsub-staging.chatsecure.org",
+      "tls_key_path": "/srv/ssl/pubsub.chatsecure.org.key",
+      "tls_cert_path": "/srv/ssl/pubsub.chatsecure.org.crt"
+    }
+  },
+  "run_list": [
+  	"recipe[firewall::default]",
+    "recipe[nodejs::npm]",
+    "recipe[chatsecure_ssl]",
+    "recipe[chatsecure_rubdub]"
+  ]
+}
