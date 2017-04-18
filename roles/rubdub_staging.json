@@ -21,7 +21,7 @@
       "ssl_key" : "pubsub.chatsecure.org.key"
     },
     "chatsecure_rubdub": {
-      "bind_address": "pubsub-staging.chatsecure.org",
+      "bind_address": "0.0.0.0",
       "domain": "pubsub-staging.chatsecure.org",
       "tls_key_path": "/srv/ssl/pubsub.chatsecure.org.key",
       "tls_cert_path": "/srv/ssl/pubsub.chatsecure.org.crt"
