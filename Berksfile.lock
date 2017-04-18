@@ -11,6 +11,7 @@ DEPENDENCIES
     path: site-cookbooks/chatsecure_web
   database
   fail2ban
+  firewall
   git
   htop
   logwatch
@@ -43,6 +44,7 @@ GRAPH
     nginx (>= 0.0.0)
   chatsecure_rubdub (0.1.0)
     cron (>= 0.0.0)
+    firewall (>= 0.0.0)
     nodejs (>= 0.0.0)
     ssh_known_hosts (>= 0.0.0)
   chatsecure_ssl (0.1.0)
